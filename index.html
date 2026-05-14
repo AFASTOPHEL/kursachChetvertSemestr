@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="ru">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>ЗАМЕТОН | Управление проектами</title>
+  <link rel="stylesheet" href="/src/style.css">
+</head>
+
+<body class="page">
+  <div class="app">
+    <header class="header">
+      <div class="header__logo">ЗАМЕТОН.</div>
+      <div class="header__actions">
+        <input type="text" id="search-input" class="search-input" placeholder="Поиск задач...">
+        <button class="btn btn--primary" id="add-task-btn">+ Новая задача</button>
+        <div class="avatar">ИИ</div>
+      </div>
+    </header>
+
+    <div class="layout">
+      <aside class="sidebar">
+        <nav class="nav"></nav>
+      </aside>
+
+      <main class="main">
+        <div class="board" id="kanban-board"></div>
+        <div class="analytics" id="analytics-panel" style="display: none;"></div>
+        <div class="settings" id="team-settings" style="display: none;"></div>
+      </main>
+    </div>
+
+    <div class="modal" id="task-modal" style="display: none;">
+      <div class="modal__content">
+        <div class="modal__header">
+          <h2 id="modal-title">Новая задача</h2>
+          <button class="btn-close" id="close-modal-btn">&times;</button>
+        </div>
+        <form class="modal__form" id="new-task-form">
+          <input type="text" id="task-title" class="modal__input" placeholder="Название задачи" required>
+          <textarea id="task-desc" class="modal__input modal__input--textarea" placeholder="Описание" rows="3"
+            required></textarea>
+          <select id="task-status" class="modal__select">
+            <option value="todo">К выполнению</option>
+            <option value="in-progress">В работе</option>
+            <option value="under-review">На рассмотрении</option>
+            <option value="done">Готово</option>
+          </select>
+          <button type="submit" class="btn btn--primary" id="modal-submit-btn">Создать задачу</button>
+        </form>
+      </div>
+    </div>
+  </div>
+
+  <script type="module" src="/src/main.js"></script>
+</body>
+
+</html>
