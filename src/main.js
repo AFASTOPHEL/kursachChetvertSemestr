@@ -74,4 +74,17 @@ document.addEventListener('DOMContentLoaded', async () => {
       kanbanBoard.setSearchQuery(e.target.value);
     });
   }
+  setInterval(async () => {
+    try {
+      const freshTasks = await api.fetchTasks();
+      freshTasks.forEach(freshTask => {
+        const exists = kanbanBoard.tasks.some(t => t.id === freshTask.id);
+        if (!exists) {
+          kanbanBoard.addTask(freshTask);
+        }
+      });
+    } catch (error) {
+      console.warn('Ошибка фоновой синхронизации с API:', error);
+    }
+  }, 10000);
 });
